@@ -1,6 +1,9 @@
+// main.js
+
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
+const shell = require('electron').shell
 
 const createWindow = () => {
     // Create the browser window.
@@ -15,8 +18,27 @@ const createWindow = () => {
     // and load the index.html of the app.
     mainWindow.loadFile('index.html')
 
+    var menu = Menu.buildFromTemplate([
+        {
+            label : 'Test',
+            submenu: [
+                {label: 'add task'},
+                {label: 'remove task'},
+                {label: 'see git repository',
+                click(){
+                   shell.openExternal('https://github.com/saudrix/infiniteTodo');
+                }},
+                {label: 'quit infinite Todo',
+                click(){
+                    app.quit();
+                }},
+            ]
+        }
+    ])
+
+    Menu.setApplicationMenu(menu);
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
 }
 
 // This method will be called when Electron has finished
@@ -41,3 +63,4 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+// preload.js
