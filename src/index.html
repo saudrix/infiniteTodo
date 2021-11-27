@@ -5,12 +5,27 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <title>Infinite</title>
+    <link rel ='stylesheet' href='../assets/css/index.css'>
 </head>
 <body>
-<h1>Hello World!</h1>
+
 We are using Node.js <span id="node-version"></span>,
 Chromium <span id="chrome-version"></span>,
 and Electron <span id="electron-version"></span>.
+<header>
+    <img id="logo" src="../assets/images/infinite.png">
+    <h1>INFINITE</h1>
+</header>
+
+<input id="taskValue" placeholder="what do you got to do">
+<button id="addButton"> Add item</button>
+
+<ul id="taskList">
+</ul>
+
+<script type = "module" src="add.js"></script>
+<script type = "module" src="../index.js"></script>
+
 </body>
 </html>
